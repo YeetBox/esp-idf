@@ -86,7 +86,7 @@ class Env(object):
             except ValueError:
                 # try to auto detect ports
                 allocated_ports = [self.allocated_duts[x]["port"] for x in self.allocated_duts]
-                available_ports = dut_class.list_available_ports()
+                available_ports = ["/dev/cu.SLAB_USBtoUART"]
                 for port in available_ports:
                     if port not in allocated_ports:
                         if dut_class.confirm_dut(port, app_inst):

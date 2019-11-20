@@ -19,6 +19,7 @@ except ImportError:
     if test_fw_path and test_fw_path not in sys.path:
         sys.path.insert(0, test_fw_path)
     import IDF
+    from IDF.IDFDUT import ESP32DUT
 
 import DUT
 
@@ -137,8 +138,8 @@ def test_examples_protocol_simple_ota_example(env, extra_data):
         thread1.close()
     dut1.expect("Starting OTA example", timeout=30)
 
-    print("writing to device: {}".format("https://" + host_ip + ":8000/simple_ota.bin"))
-    dut1.write("https://" + host_ip + ":8000/simple_ota.bin")
+    print("writing to device: {}".format("https://" + host_ip + ":8070/simple_ota.bin"))
+    dut1.write("https://" + host_ip + ":8070/simple_ota.bin")
     dut1.expect("Loaded app from partition at offset 0x110000", timeout=60)
     dut1.expect("Starting OTA example", timeout=30)
 
